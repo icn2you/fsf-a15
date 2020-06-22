@@ -1,2 +1,2 @@
-# fsf-a15
-Full Stack Flex Assignment 15: Click Game
+# Assignment 15: Clicky Game
+## [The Coding Boot Camp @ UCLA Extension](https://bootcamp.uclaextension.edu/coding/)
