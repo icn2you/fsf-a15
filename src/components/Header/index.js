@@ -6,7 +6,10 @@ import './style.css';
 function Header(props) {
   return (
     <header>
-      <Navbar />
+      <Navbar 
+        score={props.score}
+        topScore={props.topScore}
+      />
       <Jumbotron />
     </header>
   );
