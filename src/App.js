@@ -10,13 +10,19 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    const pokeObjArr = pokemon.map(pokemon => 
+    const pokemonArr = pokemon.map(pokemon => 
       Object.assign(pokemon, { clicked: false }));
 
     // DEBUG:
-    console.log(`pokeObjArr = ${JSON.stringify(pokeObjArr)}`);
+    // console.log(`pokemonArr = ${JSON.stringify(pokemonArr)}`);
 
-    this.state = {pokeObjArr};
+    this.state = {
+      pokemon: pokemonArr,
+      game: {
+        score: 0,
+        topScore: 0
+      }
+    };
   }
 
   /* 
@@ -35,14 +41,15 @@ class App extends Component {
         [shuffledArr[j], shuffledArr[i]];
     }
 
-    console.log(
-      `Shuffled array: ${JSON.stringify(arr)}`
-    );
+    // DEBUG:
+    // console.log(
+    //   `Shuffled array: ${JSON.stringify(arr)}`
+    // );
 
     return shuffledArr;
   }
 
-  markClicked(id, clicked) {
+  handleClick = (id, clicked) => {
     // DEBUG:
     console.log(`Pokemon ${id} clicked? ${clicked}`);
     
@@ -54,40 +61,52 @@ class App extends Component {
     } else {
       // ASSERT: User has not already clicked this Pokémon;
       //         therefore, their score increases by five points.
-      const pokeObjArr = this.shuffle(
-        this.state.pokeObjArr.map(pokemon =>
+      const pokemonArr = this.shuffle(
+        this.state.pokemon.map(pokemon =>
         (pokemon.id === id) ?
         Object.assign(pokemon, { clicked: true }) :
         pokemon
       ));
 
-      console.log(
-        `Returned array: ${JSON.stringify(pokeObjArr)}`
-      );
-      
-      this.setState({pokeObjArr});
-
       // DEBUG:
-      console.log(
-        `New state: ${JSON.stringify(this.state)}`);
+      // console.log(
+      //   `Returned array: ${JSON.stringify(pokemonArr)}`
+      // );
+      
+      this.setState(
+        {
+          pokemon: pokemonArr, 
+          game: Object.assign(
+            this.state.game, this.handleScoreIncrease())
+        }
+      );
+
+      console.log(`currState=${JSON.stringify(this.state)}`);
     }
   }
 
+  handleScoreIncrease = () => {
+    return { score: this.state.game.score + 5 }
+  }
+
   render() {
-    const pokemonImgs = this.state.pokeObjArr.map(pokemon => 
+    const pokemonImgs = this.state.pokemon.map(pokemon => 
       <Pokemon
         id={pokemon.id}
         key={pokemon.id}
         name={pokemon.name}
         img={pokemon.image}
         clicked={pokemon.clicked}
-        markClicked={this.markClicked.bind(this)}
+        handleClick={this.handleClick.bind(this)}
       />
     );
 
     return (
       <>
-        <Header />
+        <Header 
+          score={this.state.game.score}
+          topScore={this.state.game.topScore}
+        />
         <Main>{pokemonImgs}</Main>
         <Footer />
       </>
