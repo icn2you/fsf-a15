@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Bulbasaur",
+    "image": "../assets/images/bulbasaur.png"
+  },
+  {
+    "id": 2,
+    "name": "Butterfree",
+    "image": "../assets/images/butterfree.png"
+  },
+  {
+    "id": 3,
+    "name": "Charmander",
+    "image": "../assets/images/charmander.png"
+  },
+  {
+    "id": 4,
+    "name": "Chikorita",
+    "image": "../assets/images/chikorita.png"
+  },
+  {
+    "id": 5,
+    "name": "Cyndaquil",
+    "image": "../assets/images/cyndaquil.png"
+  },
+  {
+    "id": 6,
+    "name": "Gengar",
+    "image": "../assets/images/gengar.png"
+  },
+  {
+    "id": 7,
+    "name": "Golduck",
+    "image": "../assets/images/golduck.png"
+  },
+  {
+    "id": 8,
+    "name": "Pidgeotto",
+    "image": "../assets/images/pidgeotto.png"
+  },
+  {
+    "id": 9,
+    "name": "Pikachu",
+    "image": "../assets/images/pikachu.png"
+  },
+  {
+    "id": 10,
+    "name": "Psyduck",
+    "image": "../assets/images/psyduck.png"
+  },
+  {
+    "id": 11,
+    "name": "Squirtle",
+    "image": "../assets/images/squirtle.png"
+  },
+  {
+    "id": 12,
+    "name": "Totodile",
+    "image": "../assets/images/totodile.png"
+  }
+]
