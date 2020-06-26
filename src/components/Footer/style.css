@@ -1,0 +1,21 @@
+footer {
+  background: #000;
+  border-top: 5px #C73F4D solid;
+  color: #FFF;
+  font-weight: 400;
+  height: 10%;
+}
+
+#copyright {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 1.5vh 0 1vh;
+}
+
+#attribution {
+  font-size: 0.75rem;
+}
+
+a, a:active, a:hover, a:visited {
+  color: #FF8787;
+}
