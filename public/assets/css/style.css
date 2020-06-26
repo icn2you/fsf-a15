@@ -1,0 +1,35 @@
+@charset "UTF-8";
+/*********************************************************************
+ Poké Fonts
+
+ Compliments of [Google Fonts](https://fonts.google.com)
+*********************************************************************/
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600&display=swap");
+/*********************************************************************
+Poké Red Color Palette
+*********************************************************************/
+/*********************************************************************
+FSWD:  Christopher B. Zenner
+Date:  06/25/2020
+File:  style.scss -> style.css
+Ver.:  0.1.0 20200625
+
+This SCSS specifies the layout and style for the Pokéclick Game.
+*********************************************************************/
+/*********************************************************************
+ Global Elements
+*********************************************************************/
+html, body, #root {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background-color: white;
+  color: #060909;
+  font-family: "Dosis", sans-serif !important;
+  line-height: 1.5em;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,28 @@
+/*********************************************************************
+FSWD:  Christopher B. Zenner
+Date:  06/25/2020
+File:  style.scss -> style.css
+Ver.:  0.1.0 20200625
+
+This SCSS specifies the layout and style for the Pokéclick Game.
+*********************************************************************/
+@use './components/poke-fonts' as fonts;
+@use './components/poke-palette' as palette;
+
+/*********************************************************************
+ Global Elements
+*********************************************************************/
+$almost-black: #060909;
+
+html, body, #root {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background-color: white;
+  color: $almost-black;
+  font-family: fonts.$sans-serif-font-stack !important;
+  line-height: 1.5em;
+}
