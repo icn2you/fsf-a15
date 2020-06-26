@@ -33,13 +33,13 @@ class App extends Component {
 
       [shuffledArr[i], shuffledArr[j]] = 
         [shuffledArr[j], shuffledArr[i]];
-
-      console.log(
-        `Shuffled array: ${JSON.stringify(arr)}`
-      );
-
-      return shuffledArr;
     }
+
+    console.log(
+      `Shuffled array: ${JSON.stringify(arr)}`
+    );
+
+    return shuffledArr;
   }
 
   markClicked(id, clicked) {
@@ -54,7 +54,6 @@ class App extends Component {
     } else {
       // ASSERT: User has not already clicked this Pokémon;
       //         therefore, their score increases by five points.
-      
       const pokeObjArr = this.shuffle(
         this.state.pokeObjArr.map(pokemon =>
         (pokemon.id === id) ?
@@ -63,29 +62,14 @@ class App extends Component {
       ));
 
       console.log(
-        `Test array: ${JSON.stringify(pokeObjArr)}`
+        `Returned array: ${JSON.stringify(pokeObjArr)}`
       );
       
       this.setState({pokeObjArr});
 
       // DEBUG:
-      // this.setState({testArr});
-
-      // DEBUG:
       console.log(
-        `New state: ${JSON.stringify(this.state.pokeObjArr)}`);
-
-
-
-/*       this.setState({
-        id = 
-      })
-
-      this.state.pokemon.clicked = true;
-
-      const pokemon = this.shuffle(this.state.pokemon);
-
-      this.setState({pokemon}); */
+        `New state: ${JSON.stringify(this.state)}`);
     }
   }
 
