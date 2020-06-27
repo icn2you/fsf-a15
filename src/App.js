@@ -19,9 +19,10 @@ class App extends Component {
     this.state = {
       pokemon: pokemonArr,
       game: {
+        message: 'Click a Pokémon to begin!',
         score: 0,
         topScore: 0
-      }
+      },
     };
   }
 
@@ -106,6 +107,7 @@ class App extends Component {
         <Header 
           score={this.state.game.score}
           topScore={this.state.game.topScore}
+          msg={this.state.game.message}
         />
         <Main>{pokemonImgs}</Main>
         <Footer />

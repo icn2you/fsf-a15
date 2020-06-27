@@ -9,6 +9,7 @@ function Header(props) {
       <Navbar 
         score={props.score}
         topScore={props.topScore}
+        msg={props.msg}
       />
       <Jumbotron />
     </header>
