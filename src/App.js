@@ -10,20 +10,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    const pokemonArr = pokemon.map(pokemon => 
-      Object.assign(pokemon, { clicked: false }));
-
-    // DEBUG:
-    // console.log(`pokemonArr = ${JSON.stringify(pokemonArr)}`);
-
-    this.state = {
-      pokemon: pokemonArr,
-      game: {
-        message: 'Click a Pokémon to begin!',
-        score: 0,
-        topScore: 0
-      },
-    };
+    this.state = this.resetGameState();
   }
 
   /* 
@@ -57,6 +44,7 @@ class App extends Component {
     if (clicked) {
       // ASSERT: User has already clicked this Pokémon;
       //         therefore, they lose the game.
+      // DEBUG:
       console.log(
         `Pokemon ${id} has already been clicked. You're a loser!`);
     } else {
@@ -74,13 +62,11 @@ class App extends Component {
       //   `Returned array: ${JSON.stringify(pokemonArr)}`
       // );
       
-      this.setState(
-        {
+      this.setState({
           pokemon: pokemonArr, 
           game: Object.assign(
             this.state.game, this.handleScoreIncrease())
-        }
-      );
+      });
 
       console.log(`currState=${JSON.stringify(this.state)}`);
     }
@@ -88,6 +74,23 @@ class App extends Component {
 
   handleScoreIncrease = () => {
     return { score: this.state.game.score + 5 }
+  }
+
+  resetGameState = () => {
+    const pokemonArr = pokemon.map(pokemon => 
+      Object.assign(pokemon, { clicked: false }));
+
+    // DEBUG:
+    console.log(`pokemonArr = ${JSON.stringify(pokemonArr)}`);
+
+    return {
+      pokemon: pokemonArr,
+      game: {
+        message: 'Click a Pokémon to begin!',
+        score: 0,
+        topScore: 0
+      },
+    };
   }
 
   render() {
