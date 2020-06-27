@@ -10,7 +10,8 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = this.resetGameState('Click a Pokémon to begin!');
+    this.state = 
+      this.resetGameState('Click a Pokémon to begin!', 0, 0);
   }
 
   /* 
@@ -33,40 +34,57 @@ class App extends Component {
   }
 
   handleClick = (id, name, clicked) => {
+    // DEBUG:
+    // console.log(`You clicked ${name}.`);
+
     if (clicked) {
       // ASSERT: User has already clicked this Pokémon;
       //         therefore, they lose the game.
       this.setState(
         this.resetGameState(
-          `${name} has already been clicked. You lose!`));
+          `${name} has already been clicked. You lose!`,
+          this.state.game.score,
+          this.state.game.topScore
+      ));
     } else {
       // ASSERT: User has not already clicked this Pokémon;
       //         therefore, their score increases by five points.
+      const updatedGame = this.handleScoreIncrease(name);
       
-      // 1. Set this Pokémon's clicked state to true
-      // 2. Shuffle "the deck."
-      const pokemonArr = this.shuffle(
-        this.state.pokemon.map(pokemon =>
-        (pokemon.id === id) ?
-        Object.assign(pokemon, { clicked: true }) :
-        pokemon
-      ));
-
-      this.setState({
-        pokemon: pokemonArr,
-        game: this.handleScoreIncrease()
-      });
+      if (this.state.game.score === this.state.pokemon.length * 5) {
+        this.setState(
+          this.resetGameState(
+            `CONGRATULATIONS! YOU WON THE GAME!!`,
+            this.state.game.score,
+            this.state.game.topScore
+        ));        
+      } else {
+        // 1. Set this Pokémon's clicked state to true
+        // 2. Shuffle "the deck." 
+        const pokemonArr = this.shuffle(
+          this.state.pokemon.map(pokemon =>
+          (pokemon.id === id) ?
+          Object.assign(pokemon, { clicked: true }) :
+          pokemon
+        ));
+  
+        this.setState({
+          pokemon: pokemonArr,
+          game: updatedGame
+        });
+      }
     }
   }
 
-  handleScoreIncrease = () => {
-    return Object.assign(
-      this.state.game, 
-      { score: this.state.game.score + 5 }
+  handleScoreIncrease = (pokemonName) => 
+    Object.assign(
+      this.state.game, { 
+        score: this.state.game.score + 5,
+        message: `${pokemonName} was an excellent choice!`
+      }
     );
-  }
 
-  resetGameState = (userMsg) => {
+  resetGameState = (userMsg, gameScore, userTopScore) => {
     const pokemonArr = pokemon.map(pokemon => 
       Object.assign(pokemon, { clicked: false }));
 
@@ -75,7 +93,7 @@ class App extends Component {
       game: {
         message: userMsg,
         score: 0,
-        topScore: 0
+        topScore: Math.max(gameScore, userTopScore)
       },
     };
   }
