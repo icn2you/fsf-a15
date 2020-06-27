@@ -29,29 +29,22 @@ class App extends Component {
         [shuffledArr[j], shuffledArr[i]];
     }
 
-    // DEBUG:
-    // console.log(
-    //   `Shuffled array: ${JSON.stringify(arr)}`
-    // );
-
     return shuffledArr;
   }
 
   handleClick = (id, name, clicked) => {
-    // DEBUG:
-    // console.log(`Pokemon ${id} clicked? ${clicked}`);
-    
     if (clicked) {
       // ASSERT: User has already clicked this Pokémon;
       //         therefore, they lose the game.
-      // DEBUG:
-      // console.log(
-      //   `Pokemon ${id} has already been clicked. You're a loser!`);
-
-      this.setState(this.resetGameState(`${name} has already been clicked. You lose!`));
+      this.setState(
+        this.resetGameState(
+          `${name} has already been clicked. You lose!`));
     } else {
       // ASSERT: User has not already clicked this Pokémon;
       //         therefore, their score increases by five points.
+      
+      // 1. Set this Pokémon's clicked state to true
+      // 2. Shuffle "the deck."
       const pokemonArr = this.shuffle(
         this.state.pokemon.map(pokemon =>
         (pokemon.id === id) ?
@@ -59,32 +52,23 @@ class App extends Component {
         pokemon
       ));
 
-      // DEBUG:
-      // console.log(
-      //   `Returned array: ${JSON.stringify(pokemonArr)}`
-      // );
-      
       this.setState({
-          pokemon: pokemonArr, 
-          game: Object.assign(
-            this.state.game, this.handleScoreIncrease())
+        pokemon: pokemonArr,
+        game: this.handleScoreIncrease()
       });
-
-      // DEBUG:
-      // console.log(`currState=${JSON.stringify(this.state)}`);
     }
   }
 
   handleScoreIncrease = () => {
-    return { score: this.state.game.score + 5 }
+    return Object.assign(
+      this.state.game, 
+      { score: this.state.game.score + 5 }
+    );
   }
 
   resetGameState = (userMsg) => {
     const pokemonArr = pokemon.map(pokemon => 
       Object.assign(pokemon, { clicked: false }));
-
-    // DEBUG:
-    // console.log(`pokemonArr = ${JSON.stringify(pokemonArr)}`);
 
     return {
       pokemon: pokemonArr,
