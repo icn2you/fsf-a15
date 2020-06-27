@@ -19,6 +19,10 @@ This SCSS specifies the layout and style for the Pokéclick Game.
 /*********************************************************************
  Global Elements
 *********************************************************************/
+* {
+  box-sizing: border-box;
+}
+
 html, body, #root {
   padding: 0;
   margin: 0;

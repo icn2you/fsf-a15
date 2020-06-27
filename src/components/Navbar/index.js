@@ -4,8 +4,8 @@ import './style.css';
 
 export function Navbar(props) {
   return (
-    <nav className="container-fluid">
-      <div className="row pt-2 pb-2">
+    <nav className="container-fluid fixed-top">
+      <div className="row pt-3 pb-3">
         <div className="col text-left">
           <span id="game-brand" className="align-bottom">
             Pokéclick Game
