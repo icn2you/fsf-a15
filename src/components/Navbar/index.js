@@ -7,10 +7,14 @@ export function Navbar(props) {
     <nav className="container-fluid">
       <div className="row pt-2 pb-2">
         <div className="col text-left">
-          <span id="game-brand" className="align-bottom">Pokéclick Game</span>
+          <span id="game-brand" className="align-bottom">
+            Pokéclick Game
+          </span>
         </div>
         <div className="col text-center">
-          <span id="game-msg" className="align-bottom">{props.msg}</span>    
+          <span id="game-msg" className="align-bottom">
+            {props.msg}
+          </span>    
         </div>
         <div className="col text-right">
           <Score
