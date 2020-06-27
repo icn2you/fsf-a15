@@ -13,7 +13,7 @@ nav {
 }
 
 #game-msg {
-  animation: blink 2s linear 5;
+  animation: blink 2s linear infinite;
 }
 
 @keyframes blink {
